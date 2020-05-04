@@ -1,5 +1,8 @@
+import 'reflect-metadata'
 import express, { Application } from 'express'
+
 import routes from './routes'
+import './database/connect'
 
 class Server {
   server: Application = express()

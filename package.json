@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "ts-node-dev --inspect --transpileOnly --ignore-watch node_modules src/index.ts"
+    "dev": "ts-node-dev --inspect --transpileOnly --ignore-watch node_modules src/index.ts",
+    "typeorm": "ts-node-dev ./node_modules/typeorm/cli.js"
   },
   "keywords": [],
   "author": "",
