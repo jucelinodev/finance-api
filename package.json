@@ -15,5 +15,11 @@
     "ts-node-dev": "^1.0.0-pre.44",
     "tslint": "^6.1.2",
     "typescript": "^3.8.3"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "pg": "^8.0.3",
+    "reflect-metadata": "^0.1.13",
+    "typeorm": "^0.2.24"
   }
 }
