@@ -1,6 +1,7 @@
 import 'reflect-metadata'
 import 'express-async-errors'
 import express, { Application } from 'express'
+import cors from 'cors'
 
 import routes from './routes'
 import handleError from './errors/handle-error.middleware'
@@ -16,6 +17,7 @@ class Server {
   }
 
   middlewares() {
+    this.server.use(cors())
     this.server.use(express.json())
   }
 
