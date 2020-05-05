@@ -13,6 +13,7 @@ class Route {
       return res.json({ mensagem: 'use a rota /transaction para utilizar os serviços' })
     })
     this.router.get('/transaction', transactionController.index)
+    this.router.post('/transaction', transactionController.store)
   }
 }
 
