@@ -34,6 +34,15 @@ class TransactionService {
 
     return transaction
   }
+
+  async delete(id: string) {
+    const transactionRepository = getCustomRepository(TransactionRepository)
+    const transaction = await transactionRepository.findOne(id)
+
+    if (!transaction) throw new HandleError('Transaction does not exist', 404)
+
+    await transactionRepository.remove(transaction)
+  }
 }
 
 export default new TransactionService()

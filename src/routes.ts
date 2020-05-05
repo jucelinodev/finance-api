@@ -10,10 +10,11 @@ class Route {
 
   routes() {
     this.router.get('/', (req, res) => {
-      return res.json({ mensagem: 'use a rota /transaction para utilizar os serviços' })
+      return res.json({ mensagem: 'Use a rota /transaction para utilizar os serviços' })
     })
     this.router.get('/transaction', transactionController.index)
     this.router.post('/transaction', transactionController.store)
+    this.router.delete('/transaction/:id', transactionController.destroy)
   }
 }
 
