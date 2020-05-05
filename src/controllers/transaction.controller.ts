@@ -4,20 +4,20 @@ import { TransactionRepository } from '../repositories/transaction.repository'
 import TransactionService from '../services/transaction.service'
 
 class TransactionController {
-  async index(req: Request, res: Response) {
+  async index(req: Request, res: Response): Promise<Response> {
     const transactionRepository = getCustomRepository(TransactionRepository)
     const transactions = await transactionRepository.find()
     const balance = await transactionRepository.getBalance()
     return res.json({ transactions, balance })
   }
 
-  async store(req: Request, res: Response) {
+  async store(req: Request, res: Response): Promise<Response> {
     const { title, value, type, category } = req.body
     const transaction = await TransactionService.create({ title, value, type, category })
     return res.status(201).json(transaction)
   }
 
-  async destroy(req: Request, res: Response) {
+  async destroy(req: Request, res: Response): Promise<Response> {
     const { id } = req.params
     await TransactionService.delete(id)
     return res.status(204).json()

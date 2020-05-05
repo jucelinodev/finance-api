@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express'
-import HandleError from './handle-error'
+import { HandleError } from './handle-error'
 
 export default (err: Error, request: Request, response: Response, _: NextFunction) => {
   if (err instanceof HandleError) {

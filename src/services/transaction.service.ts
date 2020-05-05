@@ -1,7 +1,8 @@
 import { getCustomRepository } from 'typeorm'
 import { TransactionRepository } from '../repositories/transaction.repository'
 import { CategoryRepository } from '../repositories/category.repository'
-import HandleError from '../errors/handle-error'
+import { HandleError } from '../errors/handle-error'
+import { Transaction } from '../entities/transaction.entity'
 
 interface ITransaction {
   title: string
@@ -11,7 +12,7 @@ interface ITransaction {
 }
 
 class TransactionService {
-  async create({ title, value, type, category }: ITransaction) {
+  async create({ title, value, type, category }: ITransaction): Promise<Transaction> {
     const transactionRepository = getCustomRepository(TransactionRepository)
     const categoryRepository = getCustomRepository(CategoryRepository)
     const { total } = await transactionRepository.getBalance()
@@ -35,7 +36,7 @@ class TransactionService {
     return transaction
   }
 
-  async delete(id: string) {
+  async delete(id: string): Promise<void> {
     const transactionRepository = getCustomRepository(TransactionRepository)
     const transaction = await transactionRepository.findOne(id)
 
