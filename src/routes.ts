@@ -1,4 +1,5 @@
 import { Router } from 'express'
+import transactionController from './controllers/transaction.controller'
 
 class Route {
   router = Router()
@@ -9,8 +10,9 @@ class Route {
 
   routes() {
     this.router.get('/', (req, res) => {
-      return res.json({ mensagem: 'express funcionado!' })
+      return res.json({ mensagem: 'use a rota /transaction para utilizar os serviços' })
     })
+    this.router.get('/transaction', transactionController.index)
   }
 }
 
