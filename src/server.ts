@@ -1,7 +1,9 @@
 import 'reflect-metadata'
+import 'express-async-errors'
 import express, { Application } from 'express'
 
 import routes from './routes'
+import handleError from './errors/handle-error.middleware'
 import './database/connect'
 
 class Server {
@@ -10,6 +12,7 @@ class Server {
   constructor() {
     this.middlewares()
     this.routes()
+    this.exceptionHandler()
   }
 
   middlewares() {
@@ -18,6 +21,10 @@ class Server {
 
   routes() {
     this.server.use(routes)
+  }
+
+  exceptionHandler() {
+    this.server.use(handleError)
   }
 }
 
