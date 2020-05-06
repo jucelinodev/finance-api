@@ -39,8 +39,15 @@ class TransactionService {
   async delete(id: string): Promise<void> {
     const transactionRepository = getCustomRepository(TransactionRepository)
     const transaction = await transactionRepository.findOne(id)
+    const balance = await transactionRepository.getBalance()
 
     if (!transaction) throw new HandleError('Transaction does not exist', 404)
+
+    if (transaction.type === 'income' && transaction.value > balance.total)
+      throw new HandleError(
+        'It is not possible to delete an entry greater than the total value',
+        400
+      )
 
     await transactionRepository.remove(transaction)
   }
