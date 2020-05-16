@@ -1,4 +1,4 @@
-# Fincance-API
+# Finance-API
 
 A API for financial control systems
 
