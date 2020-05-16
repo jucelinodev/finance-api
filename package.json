@@ -1,7 +1,7 @@
 {
   "name": "finance-api",
   "version": "1.0.0",
-  "description": "",
+  "description": "A API for financial control systems",
   "main": "index.js",
   "scripts": {
     "dev": "ts-node-dev --inspect --transpileOnly --ignore-watch node_modules src/index.ts",
