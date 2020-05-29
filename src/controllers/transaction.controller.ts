@@ -13,7 +13,12 @@ class TransactionController {
 
   async store(req: Request, res: Response): Promise<Response> {
     const { title, value, type, category } = req.body
-    const transaction = await TransactionService.create({ title, value, type, category })
+    const transaction = await TransactionService.create({
+      title,
+      value,
+      type,
+      category
+    })
     return res.status(201).json(transaction)
   }
 

@@ -12,13 +12,21 @@ interface ITransaction {
 }
 
 class TransactionService {
-  async create({ title, value, type, category }: ITransaction): Promise<Transaction> {
+  async create({
+    title,
+    value,
+    type,
+    category
+  }: ITransaction): Promise<Transaction> {
     const transactionRepository = getCustomRepository(TransactionRepository)
     const categoryRepository = getCustomRepository(CategoryRepository)
     const { total } = await transactionRepository.getBalance()
-    let trasactionCategory = await categoryRepository.findOne({ where: { title: category } })
+    let trasactionCategory = await categoryRepository.findOne({
+      where: { title: category }
+    })
 
-    if (type === 'outcome' && total < value) throw new HandleError('You do not have enough balance')
+    if (type === 'outcome' && total < value)
+      throw new HandleError('You do not have enough balance')
 
     if (!trasactionCategory) {
       trasactionCategory = categoryRepository.create({ title: category })
